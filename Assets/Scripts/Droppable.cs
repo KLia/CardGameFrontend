@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Cards;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class Droppable : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler
