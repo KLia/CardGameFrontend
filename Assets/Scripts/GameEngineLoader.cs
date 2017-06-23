@@ -18,7 +18,7 @@ namespace Assets.Scripts
             {
                 _isCreated = true;
                 DontDestroyOnLoad(this.gameObject);
-                InitializeNewGame(null, null, null);
+               // InitializeNewGame(null, null, null);
             }
         }
 
