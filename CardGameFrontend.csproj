@@ -118,6 +118,7 @@
     <Compile Include="Assets\Scripts\Draggable.cs" />
     <Compile Include="Assets\Scripts\Droppable.cs" />
     <Compile Include="Assets\Scripts\GameEngineLoader.cs" />
+    <Compile Include="Assets\Scripts\NetworkManagerHUD.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Plugins\CardGame\Common.Logging.Core.xml" />

@@ -18,6 +18,7 @@ namespace Assets.Scripts.Cards
             cardPrefab = Instantiate(Resources.Load("Card")) as GameObject;
             cardPrefab.GetComponent<Image>().color = Random.ColorHSV();
             cardPrefab.transform.SetParent(hand);
+            cardPrefab.tag = "Card";
         
             var ci = cardPrefab.GetComponent<CardInfo>();
             ci.Initialize();
