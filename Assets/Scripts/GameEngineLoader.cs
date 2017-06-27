@@ -9,8 +9,8 @@ namespace Assets.Scripts
     public class GameEngineLoader : MonoBehaviour
     {
         private bool _isCreated;
-        private IPlayer currentPlayer;
-        private IPlayer currentOpponent;
+        private IPlayer _currentPlayer;
+        private IPlayer _currentOpponent;
 
         public void Awake()
         {
@@ -31,7 +31,7 @@ namespace Assets.Scripts
         //called by "Start New Game" button in Splash Screen Scene
         public void LoadNewGameScene()
         {
-            SceneManager.LoadScene("CardGameScene1");
+            SceneManager.LoadSceneAsync("CardGameScene1");
             InitializeNewGame(null, null, null);
         } 
     }
