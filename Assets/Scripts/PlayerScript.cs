@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CardGame.Model.Players.Interfaces;
+﻿using UnityEngine;
 using UnityEngine.Networking;
 
 public class PlayerScript : NetworkBehaviour
 {
-    private IPlayer player;
-
+    public void Update()
+    {
+        Debug.Log("Local Player: " +isLocalPlayer);
+        Debug.Log("Server: " + isServer);
+        Debug.Log("Client: " + isClient);
+        Debug.Log("Has Authority: " +hasAuthority);
+    }
 }

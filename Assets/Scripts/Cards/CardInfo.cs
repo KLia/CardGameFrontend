@@ -1,9 +1,8 @@
-﻿using CardGame.Model.Cards;
-using CardGame.Model.Cards.Interfaces;
+﻿using CardGame.Model.Cards.Interfaces;
 using CardGame.Model.Engine;
 using UnityEngine;
 
-namespace Assets.Scripts.Cards
+namespace Cards
 {
     public class CardInfo : MonoBehaviour
     {
