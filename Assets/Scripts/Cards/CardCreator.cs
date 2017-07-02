@@ -4,16 +4,17 @@ using UnityEngine.UI;
 
 namespace Cards
 {
-    public class CardCreator : MonoBehaviour
+    public class CardCreator : NetworkBehaviour
     {
         public RectTransform Hand;
         public GameObject CardPrefab;
 
         public void Start()
         {
+            
         }
 
-        //[Command]
+        [Command]
         public void CmdAddCardToHand()
         {
             if (Hand.childCount >= 7)
@@ -25,7 +26,9 @@ namespace Cards
             cardInstance.GetComponent<Image>().color = Random.ColorHSV();
             cardInstance.transform.SetParent(Hand);
             cardInstance.tag = "Card";
-            //NetworkServer.SpawnWithClientAuthority(cardInstance, connectionToServer); //Spawn the Card on the server
+
+            PlayerUtils.SpawnWithClientAuthority(cardInstance);
+            //NetworkServer.SpawnWithClientAuthority(cardInstance, connectionToClient); //Spawn the Card on the server
 
             var ci = cardInstance.GetComponent<CardInfo>();
             ci.Initialize();

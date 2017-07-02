@@ -10,4 +10,15 @@ public class PlayerScript : NetworkBehaviour
         Debug.Log("Client: " + isClient);
         Debug.Log("Has Authority: " +hasAuthority);
     }
+
+    public override void OnStartLocalPlayer()
+    {
+        PlayerUtils.CreatePlayerObject(this);
+    }
+
+    [Command]
+    public void CmdSpawnWithClientAuthority(GameObject go)
+    {
+        NetworkServer.SpawnWithClientAuthority(go, connectionToClient);
+    }
 }
