@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using Cards;
+using UnityEngine;
 using UnityEngine.Networking;
 
 public class PlayerUtils : NetworkBehaviour
 {
     public static PlayerScript PlayerObject;
-
+    
     public void Awake()
     {
         DontDestroyOnLoad(this);
@@ -15,8 +16,8 @@ public class PlayerUtils : NetworkBehaviour
         PlayerObject = ps;
     }
 
-    public static void SpawnWithClientAuthority(GameObject go)
+    public static void SpawnCardWithClientAuthority()
     {
-        PlayerObject.CmdSpawnWithClientAuthority(go);
+        PlayerObject.CmdSpawnCardWithClientAuthority();
     }
 }
