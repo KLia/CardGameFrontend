@@ -13,6 +13,11 @@ namespace Cards
             Card = new SampleMinion();
         }
 
+        public void Update()
+        {
+            
+        }
+
         public void OnPlay()
         {
             GameEventManager.CardPlayed(Card as IMinion);

@@ -28,14 +28,14 @@ public class PlayerScript : NetworkBehaviour
     {
         var cardInfo = Instantiate(CardCreator.Instance.CardPrefab);
         NetworkServer.SpawnWithClientAuthority(cardInfo, connectionToClient);
-        RpcSpawnOpponentCardOnClient(cardInfo);
+        RpcSpawnOpponentCardOnClient(cardInfo, Random.ColorHSV());
     }
 
     [ClientRpc]
-    public void RpcSpawnOpponentCardOnClient(GameObject cardInfo)
+    public void RpcSpawnOpponentCardOnClient(GameObject cardInfo, Color color)
     {
-        cardInfo.GetComponent<Image>().color = Random.ColorHSV();
         cardInfo.tag = "Card";
+        cardInfo.GetComponent<Image>().color = color;
         var ci = cardInfo.GetComponent<CardInfo>();
         ci.Initialize();
 
@@ -43,7 +43,6 @@ public class PlayerScript : NetworkBehaviour
         {
             var board = GameObject.Find("OpponentBoard");
             cardInfo.transform.SetParent(board.transform);
-            Debug.Log("Added Card to Hand");
         }
         else if (isLocalPlayer)
         {
