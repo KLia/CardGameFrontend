@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel;
+using UnityEngine.SceneManagement;
 
 #if ENABLE_UNET
 
@@ -24,6 +25,11 @@ namespace UnityEngine.Networking
         void Awake()
         {
             manager = GetComponent<NetworkManager>();
+            string[] args = System.Environment.GetCommandLineArgs();
+            foreach (string arg in args)
+            {
+                Debug.Log(arg);
+            }
         }
 
         void Update()
@@ -38,10 +44,12 @@ namespace UnityEngine.Networking
                     if (Input.GetKeyDown(KeyCode.S))
                     {
                         manager.StartServer();
+                        SceneManager.LoadSceneAsync("CardGameScene1");
                     }
                     if (Input.GetKeyDown(KeyCode.H))
                     {
                         manager.StartHost();
+                        SceneManager.LoadSceneAsync("CardGameScene1");
                     }
                 }
                 if (Input.GetKeyDown(KeyCode.C))
@@ -112,6 +120,7 @@ namespace UnityEngine.Networking
                         if (GUI.Button(new Rect(xpos, ypos, 200, 20), "LAN Server Only(S)"))
                         {
                             manager.StartServer();
+                            SceneManager.LoadSceneAsync("CardGameScene1");
                         }
                         ypos += spacing;
                     }

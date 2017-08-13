@@ -1,8 +1,7 @@
 ﻿using CardGame.Model.Cards;
 using CardGame.Model.Cards.Interfaces;
-using CardGame.Model.Engine;
 
-namespace Assets.Scripts.Cards
+namespace Cards
 {
     /// <summary>
     /// Implements SampleMinion

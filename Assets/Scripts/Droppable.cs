@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Cards;
+﻿using Cards;
 using UnityEngine;
 using UnityEngine.EventSystems;
 

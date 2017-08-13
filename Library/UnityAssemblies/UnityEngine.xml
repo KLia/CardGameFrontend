@@ -4608,12 +4608,12 @@ Note: Using raw JNI functions requires advanced knowledge of the Android Java Na
     </member>
     <member name="P:UnityEngine.AnimatorControllerParameter.defaultFloat">
       <summary>
-        <para>The default bool value for the parameter.</para>
+        <para>The default float value for the parameter.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.AnimatorControllerParameter.defaultInt">
       <summary>
-        <para>The default bool value for the parameter.</para>
+        <para>The default int value for the parameter.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.AnimatorControllerParameter.name">
@@ -6097,6 +6097,14 @@ See Also: WWW.assetBundle, WWW.LoadFromCacheOrDownload.</param>
         <para>Return all asset names in the AssetBundle.</para>
       </summary>
     </member>
+    <member name="M:UnityEngine.AssetBundle.GetAllLoadedAssetBundles">
+      <summary>
+        <para>To use when you need to get a list of all the currently loaded Asset Bundles.</para>
+      </summary>
+      <returns>
+        <para>Returns IEnumerable&lt;AssetBundle&gt; of all currently loaded Asset Bundles.</para>
+      </returns>
+    </member>
     <member name="M:UnityEngine.AssetBundle.GetAllScenePaths">
       <summary>
         <para>Return all the scene asset paths (paths to *.unity assets) in the AssetBundle.</para>
@@ -6268,6 +6276,12 @@ See Also: WWW.assetBundle, WWW.LoadFromCacheOrDownload.</param>
         <para>Unloads all assets in the bundle.</para>
       </summary>
       <param name="unloadAllLoadedObjects"></param>
+    </member>
+    <member name="M:UnityEngine.AssetBundle.UnloadAllAssetBundles(System.Boolean)">
+      <summary>
+        <para>Unloads all currently loaded Asset Bundles.</para>
+      </summary>
+      <param name="unloadAllObjects">Determines whether the current instances of objects loaded from Asset Bundles will also be unloaded.</param>
     </member>
     <member name="T:UnityEngine.AssetBundleCreateRequest">
       <summary>
@@ -19971,7 +19985,7 @@ GUILayout.MaxHeight, GUILayout.ExpandWidth, GUILayout.ExpandHeight.</param>
     </member>
     <member name="M:UnityEngine.GUILayout.Button(UnityEngine.Texture,UnityEngine.GUILayoutOption[])">
       <summary>
-        <para>Make a single press button. The user clicks them and something happens immediately.</para>
+        <para>Make a single press button.</para>
       </summary>
       <param name="text">Text to display on the button.</param>
       <param name="image">Texture to display on the button.</param>
@@ -19986,7 +20000,7 @@ GUILayout.MaxHeight, GUILayout.ExpandWidth, GUILayout.ExpandHeight.</param>
     </member>
     <member name="M:UnityEngine.GUILayout.Button(System.String,UnityEngine.GUILayoutOption[])">
       <summary>
-        <para>Make a single press button. The user clicks them and something happens immediately.</para>
+        <para>Make a single press button.</para>
       </summary>
       <param name="text">Text to display on the button.</param>
       <param name="image">Texture to display on the button.</param>
@@ -20001,7 +20015,7 @@ GUILayout.MaxHeight, GUILayout.ExpandWidth, GUILayout.ExpandHeight.</param>
     </member>
     <member name="M:UnityEngine.GUILayout.Button(UnityEngine.GUIContent,UnityEngine.GUILayoutOption[])">
       <summary>
-        <para>Make a single press button. The user clicks them and something happens immediately.</para>
+        <para>Make a single press button.</para>
       </summary>
       <param name="text">Text to display on the button.</param>
       <param name="image">Texture to display on the button.</param>
@@ -20016,7 +20030,7 @@ GUILayout.MaxHeight, GUILayout.ExpandWidth, GUILayout.ExpandHeight.</param>
     </member>
     <member name="M:UnityEngine.GUILayout.Button(UnityEngine.Texture,UnityEngine.GUIStyle,UnityEngine.GUILayoutOption[])">
       <summary>
-        <para>Make a single press button. The user clicks them and something happens immediately.</para>
+        <para>Make a single press button.</para>
       </summary>
       <param name="text">Text to display on the button.</param>
       <param name="image">Texture to display on the button.</param>
@@ -20031,7 +20045,7 @@ GUILayout.MaxHeight, GUILayout.ExpandWidth, GUILayout.ExpandHeight.</param>
     </member>
     <member name="M:UnityEngine.GUILayout.Button(System.String,UnityEngine.GUIStyle,UnityEngine.GUILayoutOption[])">
       <summary>
-        <para>Make a single press button. The user clicks them and something happens immediately.</para>
+        <para>Make a single press button.</para>
       </summary>
       <param name="text">Text to display on the button.</param>
       <param name="image">Texture to display on the button.</param>
@@ -20046,7 +20060,7 @@ GUILayout.MaxHeight, GUILayout.ExpandWidth, GUILayout.ExpandHeight.</param>
     </member>
     <member name="M:UnityEngine.GUILayout.Button(UnityEngine.GUIContent,UnityEngine.GUIStyle,UnityEngine.GUILayoutOption[])">
       <summary>
-        <para>Make a single press button. The user clicks them and something happens immediately.</para>
+        <para>Make a single press button.</para>
       </summary>
       <param name="text">Text to display on the button.</param>
       <param name="image">Texture to display on the button.</param>
@@ -30816,7 +30830,7 @@ Servers must periodically acknowledge data packets received over channels with r
     </member>
     <member name="P:UnityEngine.Networking.ConnectionConfig.AcksType">
       <summary>
-        <para>Determines the size of the buffer used to store reliable messages that are waiting for acknowledgement. It can be set to Ack32, Ack64, Ack96, or Ack128. Depends of this setting buffer can hold 32, 64, 96, or 128 messages. Default value = Ack32.
+        <para>Determines the size of the buffer used to store reliable messages that are waiting for acknowledgement. It can be set to Acks32, Acks64, Acks96, or Acks128. Depends of this setting buffer can hold 32, 64, 96, or 128 messages. Default value = Ack32.
 
 Messages sent on reliable quality of service channels are stored in a special buffer while they wait for acknowledgement from the peer. This buffer can be either 32, 64, 96 or 128 positions long. It is recommended to begin with this value set to Ack32, which defines a buffer up to 32 messages in size. If you receive NoResources errors often when you send reliable messages, change this value to the next possible size.</para>
       </summary>
@@ -35470,6 +35484,11 @@ If a string, the string will be converted to raw bytes via &lt;a href="http:msdn
         <para>The duration of the particle system in seconds.</para>
       </summary>
     </member>
+    <member name="P:UnityEngine.ParticleSystem.MainModule.emitterVelocityMode">
+      <summary>
+        <para>Control how the Particle System calculates its velocity, when moving in the world.</para>
+      </summary>
+    </member>
     <member name="P:UnityEngine.ParticleSystem.MainModule.gravityModifier">
       <summary>
         <para>Scale applied to the gravity, defined by Physics.gravity.</para>
@@ -37089,6 +37108,21 @@ The Noise Module allows you to apply turbulence to the movement of your particle
     <member name="F:UnityEngine.ParticleSystemEmissionType.Time">
       <summary>
         <para>Emit over time.</para>
+      </summary>
+    </member>
+    <member name="T:UnityEngine.ParticleSystemEmitterVelocityMode">
+      <summary>
+        <para>Control how a Particle System calcualtes its velocity.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.ParticleSystemEmitterVelocityMode.Rigidbody">
+      <summary>
+        <para>Calculate the Particle System velocity by using a Rigidbody or Rigidbody2D component, if one exists on the Game Object.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.ParticleSystemEmitterVelocityMode.Transform">
+      <summary>
+        <para>Calculate the Particle System velocity by using the Transform component.</para>
       </summary>
     </member>
     <member name="T:UnityEngine.ParticleSystemGradientMode">
@@ -40409,6 +40443,23 @@ Note that IgnoreLayerCollision will reset the trigger state of affected collider
         <para>Extensions for all the types that implements IPlayable.</para>
       </summary>
     </member>
+    <member name="M:UnityEngine.Playables.PlayableExtensions.AddInput(U,V,System.Int32)">
+      <summary>
+        <para>Add a new input port and connect the output port of a Playable to this new port.</para>
+      </summary>
+      <param name="playable">The Playable used by this operation.</param>
+      <param name="sourcePlayable">The Playable to connect to.</param>
+      <param name="sourceOutputIndex">The output port of the Playable.</param>
+    </member>
+    <member name="M:UnityEngine.Playables.PlayableExtensions.ConnectInput(U,System.Int32,V,System.Int32)">
+      <summary>
+        <para>Connect the output port of a Playable to one of the input ports.</para>
+      </summary>
+      <param name="playable">The Playable used by this operation.</param>
+      <param name="inputIndex">The input port index.</param>
+      <param name="sourcePlayable">The Playable to connect to.</param>
+      <param name="sourceOutputIndex">The output port of the Playable.</param>
+    </member>
     <member name="M:UnityEngine.Playables.PlayableExtensions.Destroy(U)">
       <summary>
         <para>Destroys the current Playable.</para>
@@ -43085,13 +43136,13 @@ frame. Minimum value is 1 and maximum is 33.</para>
       <summary>
         <para>Get the corners of the calculated rectangle in the local space of its Transform.</para>
       </summary>
-      <param name="fourCornersArray">Array that corners should be filled into.</param>
+      <param name="fourCornersArray">The array that corners are filled into.</param>
     </member>
     <member name="M:UnityEngine.RectTransform.GetWorldCorners(UnityEngine.Vector3[])">
       <summary>
         <para>Get the corners of the calculated rectangle in world space.</para>
       </summary>
-      <param name="fourCornersArray">Array that corners should be filled into.</param>
+      <param name="fourCornersArray">The ray that corners are filled into.</param>
     </member>
     <member name="T:UnityEngine.RectTransform.ReapplyDrivenProperties">
       <summary>
