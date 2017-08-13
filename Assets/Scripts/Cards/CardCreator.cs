@@ -1,27 +1,29 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.UI;
 
-namespace Assets.Scripts.Cards
+namespace Cards
 {
     public class CardCreator : MonoBehaviour
     {
-        public Transform hand;
-        public GameObject cardPrefab;
+        public static CardCreator Instance;
 
+        public RectTransform Hand;
+        public GameObject CardPrefab;
+
+        public void Start()
+        {
+            Instance = this;
+        }
+        
         public void AddCardToHand()
         {
-            if (hand.childCount >= 7)
+            if (Hand.childCount >= 7)
             {
                 return;
             }
 
-            cardPrefab = Instantiate(Resources.Load("Card")) as GameObject;
-            cardPrefab.GetComponent<Image>().color = Random.ColorHSV();
-            cardPrefab.transform.SetParent(hand);
-            cardPrefab.tag = "Card";
-        
-            var ci = cardPrefab.GetComponent<CardInfo>();
-            ci.Initialize();
+            PlayerUtils.SpawnCardWithClientAuthority();
         }
     }
 }
